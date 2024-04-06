@@ -48,7 +48,7 @@
   
   <main>
     <div class="noticia">
-      <h2>Título da Notícia 1</h2>
+      <h2>Neymar Escorrega no Sabão</h2>
       <p>Descrição da Notícia 1.</p>
       <p>Data: 6 de abril de 2024</p>
     </div>
