@@ -74,6 +74,53 @@
         .trainer-overlay {
             transition: opacity 0.3s ease;
         }
+
+        @media (max-width: 640px) {
+            .container, .px-4 {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            .text-center, .text-left, .text-right {
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+            h1, h2, h3, h4, h5, h6, p, span, a, li, label, input, select, textarea, button {
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+            .class-card .p-8, .class-card .p-6 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            .class-card h3, .class-card p, .class-card ul, .class-card a {
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+            .rounded-lg, .shadow-lg, .overflow-hidden {
+                border-radius: 0.75rem !important;
+            }
+            .h-48 {
+                height: 12rem !important;
+            }
+            .min-h-screen, .hero {
+                min-height: 80vh !important;
+            }
+            .text-4xl {
+                font-size: 2rem !important;
+            }
+            .text-3xl {
+                font-size: 1.5rem !important;
+            }
+            .text-2xl {
+                font-size: 1.25rem !important;
+            }
+            .text-xl {
+                font-size: 1.1rem !important;
+            }
+            .max-w-3xl, .max-w-2xl, .max-w-md {
+                max-width: 100vw !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100">
