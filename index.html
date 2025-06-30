@@ -579,11 +579,21 @@
         if (form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                const nome = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const telefone = document.getElementById('phone').value;
-                const interesse = document.getElementById('interest').value;
-                const mensagem = document.getElementById('message').value;
+                const nome = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const telefone = document.getElementById('phone').value.trim();
+                const interesse = document.getElementById('interest').value.trim();
+                const mensagem = document.getElementById('message').value.trim();
+                let erro = '';
+                if (!nome) erro += '- Nome completo obrigatório.\n';
+                if (!email) erro += '- E-mail obrigatório.\n';
+                if (!telefone) erro += '- Telefone obrigatório.\n';
+                if (!interesse) erro += '- Selecione uma modalidade de interesse.\n';
+                if (!mensagem) erro += '- Mensagem obrigatória.\n';
+                if (erro) {
+                    alert('Por favor, preencha todos os campos obrigatórios:\n\n' + erro);
+                    return;
+                }
                 let interesseLabel = '';
                 switch (interesse) {
                     case 'muaythai': interesseLabel = 'Muay Thai'; break;
