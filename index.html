@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFT MMA - Academia de Artes Marciais</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: url('img/local.png') no-repeat center center/cover;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8));
+            z-index: 1;
+        }
+        
+        .hero > .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #e53e3e;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .trainer-card:hover .trainer-overlay {
+            opacity: 1;
+        }
+        
+        .trainer-overlay {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="img/logo.png" alt="LFT MMA Logo" class="h-12">
+                    <span class="text-xl font-bold hidden md:block">LFT MMA</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-red-500 transition duration-300">Início</a>
+                    <a href="#about" class="nav-link text-white hover:text-red-500 transition duration-300">Sobre</a>
+                    <a href="#classes" class="nav-link text-white hover:text-red-500 transition duration-300">Modalidades</a>
+                    <a href="#trainers" class="nav-link text-white hover:text-red-500 transition duration-300">Instrutores</a>
+                    <a href="#contact" class="nav-link text-white hover:text-red-500 transition duration-300">Contato</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="block py-2 text-white hover:text-red-500 transition duration-300">Início</a>
+                <a href="#about" class="block py-2 text-white hover:text-red-500 transition duration-300">Sobre</a>
+                <a href="#classes" class="block py-2 text-white hover:text-red-500 transition duration-300">Modalidades</a>
+                <a href="#trainers" class="block py-2 text-white hover:text-red-500 transition duration-300">Instrutor</a>
+                <a href="#contact" class="block py-2 text-white hover:text-red-500 transition duration-300">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <img src="img/logo.png" alt="LFT MMA Logo" class="mx-auto h-32 mb-8">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">LFT MMA</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-8">Excelência em Artes Marciais</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10">Transformando vidas através do Muay Thai, Boxe e Jiu-Jitsu. Desenvolva disciplina, condicionamento físico e autodefesa em um ambiente profissional.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Agende uma Aula Experimental</a>
+                <a href="#classes" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 border-2 border-white rounded-full transition duration-300 transform hover:scale-105">Conheça Nossas Modalidades</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sobre a LFT MMA</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Nossa academia é dedicada ao ensino de artes marciais com excelência técnica e profissionalismo.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="img/Foto1.png" alt="Academia LFT MMA" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Nossa Filosofia</h3>
+                    <p class="text-gray-600 mb-6">Na LFT MMA, acreditamos que as artes marciais vão além da luta. Elas são um caminho para o desenvolvimento pessoal, disciplina mental e condicionamento físico excepcional.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-medal text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Excelência Técnica</h4>
+                                <p class="text-gray-600">Métodos de ensino comprovados e atualizados para todas as modalidades.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-heartbeat text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Condicionamento Físico</h4>
+                                <p class="text-gray-600">Programas de treino que melhoram força, resistência e flexibilidade.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-shield-alt text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Autodefesa</h4>
+                                <p class="text-gray-600">Técnicas eficientes para proteção pessoal em situações reais.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossas Modalidades</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Oferecemos treinamento especializado em três artes marciais fundamentais.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Muay Thai Card -->
+                <div class="class-card bg-white rounded-lg overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <img src="img/muay thai.jpeg" alt="Muay Thai" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Muay Thai</h3>
+                        <p class="text-gray-600 mb-6">A arte das oito armas. Desenvolva técnicas de socos, chutes, cotoveladas e joelhadas com nossa metodologia tailandesa.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-red-600 mr-2"></i>
+                                <span>Técnicas tradicionais</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-red-600 mr-2"></i>
+                                <span>Condicionamento físico intenso</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-red-600 mr-2"></i>
+                                <span>Treino de clinch</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">Saiba Mais</a>
+                    </div>
+                </div>
+                
+                <!-- Boxing Card -->
+                <div class="class-card bg-white rounded-lg overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <img src="img/boxe.jpg" alt="Boxe" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Boxe</h3>
+                        <p class="text-gray-600 mb-6">A nobre arte do boxe. Aprenda footwork, esquivas e combinações de socos com treinadores experientes.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                <span>Técnica de socos</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                <span>Defesa pessoal</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                <span>Condicionamento cardiovascular</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">Saiba Mais</a>
+                    </div>
+                </div>
+                
+                <!-- Jiu-Jitsu Card -->
+                <div class="class-card bg-white rounded-lg overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <img src="img/jiu jitsu.jpg" alt="Jiu-Jitsu" class="h-full w-auto object-contain">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Jiu-Jitsu</h3>
+                        <p class="text-gray-600 mb-6">A arte suave. Domine técnicas de finalização, quedas e controle no solo com nosso programa estruturado.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-yellow-600 mr-2"></i>
+                                <span>Posicionamento e alavancas</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-yellow-600 mr-2"></i>
+                                <span>Finalizações e defesas</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-yellow-600 mr-2"></i>
+                                <span>Treino com e sem kimono</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section id="trainers" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossos Instrutores</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Profissionais qualificados com vasta experiência em competições e ensino.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-1 gap-8">
+                <!-- Trainer Leandro -->
+                <div class="flex justify-center">
+                    <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center w-full md:w-1/2">
+                        <img src="img/leandrin.png" alt="Mestre Leandro - LFT MMA" class="h-56 w-56 object-contain mb-6" style="background: none;">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Leandro</h3>
+                        <p class="text-red-600 font-semibold mb-3">Mestre e Fundador da LFT MMA</p>
+                        <p class="text-gray-600 text-center">Especialista em Muay Thai, Boxe e Jiu-Jitsu. Referência em formação de atletas e desenvolvimento pessoal através das artes marciais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Horários das Aulas</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">Confira nossos horários e encontre a turma ideal para você.</p>
+            </div>
+            
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-700">
+                    <!-- Muay Thai Schedule -->
+                    <div class="p-6">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-red-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-fist-raised text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Muay Thai</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between">
+                                <span>Segunda e Quarta</span>
+                                <span class="font-semibold">7h - 8h30 | 19h - 20h30</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Sexta</span>
+                                <span class="font-semibold">7h - 8h30 | 18h - 19h30</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Sábado</span>
+                                <span class="font-semibold">9h - 10h30</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Boxing Schedule -->
+                    <div class="p-6">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-blue-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-hand-rock text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Boxe</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between">
+                                <span>Terça e Quinta</span>
+                                <span class="font-semibold">7h - 8h | 19h - 20h</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Sábado</span>
+                                <span class="font-semibold">10h30 - 12h</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Jiu-Jitsu Schedule -->
+                    <div class="p-6">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-yellow-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-user-ninja text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Jiu-Jitsu</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between">
+                                <span>Segunda e Quarta</span>
+                                <span class="font-semibold">8h30 - 10h | 20h30 - 22h</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Sexta</span>
+                                <span class="font-semibold">19h30 - 21h</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Sábado</span>
+                                <span class="font-semibold">11h - 12h30</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Entre em Contato</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Agende uma aula experimental ou tire suas dúvidas sobre nossos cursos.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2 bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Envie uma Mensagem</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nome Completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Telefone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        
+                        <div>
+                            <label for="interest" class="block text-gray-700 font-medium mb-2">Interesse</label>
+                            <select id="interest" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                                <option value="">Selecione uma modalidade</option>
+                                <option value="muaythai">Muay Thai</option>
+                                <option value="boxe">Boxe</option>
+                                <option value="jiujitsu">Jiu-Jitsu</option>
+                                <option value="all">Todas as modalidades</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Enviar Mensagem</button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2 space-y-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Informações de Contato</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-red-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Endereço</h4>
+                                    <p class="text-gray-600">Av. Minas Gerais n° 2292<br>Bairro Centro<br>Araguari-MG</p>
+                                </div>
+                            </div>
+                        
+                            <div class="flex items-start">
+                                <div class="bg-red-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Telefone</h4>
+                                    <p class="text-gray-600">(34) 98804-6638</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-red-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">E-mail</h4>
+                                    <p class="text-gray-600">contato@lftmma.com.br</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-red-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Horário de Funcionamento</h4>
+                                    <p class="text-gray-600">Segunda a Sexta: 7h às 22h<br>Sábado: 9h às 13h<br>Domingo: Fechado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Siga-nos nas Redes Sociais</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.facebook.com/lft.academy?mibextid=ZbWKwL" class="bg-gray-200 hover:bg-red-600 hover:text-white p-3 rounded-full transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/lft.mma/" class="bg-gray-200 hover:bg-red-600 hover:text-white p-3 rounded-full transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://api.whatsapp.com/send/?phone=553484206130&text&type=phone_number&app_absent=0" class="bg-gray-200 hover:bg-red-600 hover:text-white p-3 rounded-full transition duration-300">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 bg-gray-300">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.1185378085884!2d-48.195033926069264!3d-18.658675982461855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94a431962695d437%3A0x21a6be634d795758!2sLFT%20MMA!5e0!3m2!1spt-BR!2sbr!4v1751296871743!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-4">
+                        <img src="img/criar.png" alt="Logo Criador" class="h-12">
+                        <span class="text-xl font-bold">Mobile Vision</span>
+                    </div>
+                    <p class="mt-4 text-gray-400 max-w-md">Transformando ideias em soluções digitais.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Serviços</h4>
+                        <ul class="space-y-2">
+                            <li><span class="text-gray-400">Fotografia</span></li>
+                            <li><span class="text-gray-400">Videografia</span></li>
+                            <li><span class="text-gray-400">Edição</span></li>
+                            <li><span class="text-gray-400">Criação de Site</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Contato</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt mr-2 text-gray-400"></i>
+                                <span class="text-gray-400">(34) 98830-2860</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                                <span class="text-gray-400">yurisilva@zt1cw.onmicrosoft.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Portfólio do Criador</h4>
+                        <ul class="space-y-2">
+                            <li><a href="https://www.instagram.com/mobilevision4/" class="text-gray-400 hover:text-white transition duration-300" target="_blank"><i class="fab fa-instagram mr-2"></i>Instagram</a></li>
+                            <li><a href="https://1928370.github.io/Postfolio/?fbclid=PAZXh0bgNhZW0CMTEAAaf1vB-LGG5ZG5xvKK-8F2Jl62hFqdb4qoiMLRFZvI4j9B2yKo0PThUdA8pGlg_aem_IHPYOS-n5lgJbMwuqi4b5w" class="text-gray-400 hover:text-white transition duration-300" target="_blank">Portfólio do Criador</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0 cursor-pointer hover:underline" id="termo-direitos">© 2025 Mobile Vision. Todos os direitos reservados.</p>
+            </div>
+            <div class="text-center mt-6">
+
+                <span class="text-gray-500 text-sm block mb-4">Esta seção é dedicada ao criador do site.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Form submission para WhatsApp
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const nome = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const telefone = document.getElementById('phone').value;
+                const interesse = document.getElementById('interest').value;
+                const mensagem = document.getElementById('message').value;
+                let interesseLabel = '';
+                switch (interesse) {
+                    case 'muaythai': interesseLabel = 'Muay Thai'; break;
+                    case 'boxe': interesseLabel = 'Boxe'; break;
+                    case 'jiujitsu': interesseLabel = 'Jiu-Jitsu'; break;
+                    case 'all': interesseLabel = 'Todas as modalidades'; break;
+                    default: interesseLabel = '';
+                }
+                const texto =
+                    `Olá, equipe LFT MMA! Gostaria de agendar uma aula experimental ou obter mais informações.\n` +
+                    `\n` +
+                    `*Dados do interessado:*\n` +
+                    `• Nome: ${nome}\n` +
+                    `• E-mail: ${email}\n` +
+                    `• Telefone: ${telefone}\n` +
+                    (interesseLabel ? `• Interesse: ${interesseLabel}\n` : '') +
+                    (mensagem ? `• Mensagem: ${mensagem}\n` : '') +
+                    `\nAguardo retorno. Obrigado!`;
+                const url = `https://api.whatsapp.com/send?phone=5534984206130&text=${encodeURIComponent(texto)}`;
+                window.open(url, '_blank');
+            });
+        }
+        
+        // Termo de direitos reservados
+        const termoDireitos = document.getElementById('termo-direitos');
+        if (termoDireitos) {
+            termoDireitos.addEventListener('click', function() {
+                alert(`TERMO DE DIREITOS RESERVADOS\n\nEste site, incluindo todo o seu conteúdo visual, textual e funcional, é propriedade exclusiva de Mobile Vision.\n\nTodos os direitos autorais, marcas, logotipos, imagens, vídeos, textos, códigos e demais elementos presentes neste site estão protegidos pela legislação vigente.\n\nÉ proibida a reprodução, distribuição, modificação, exibição, transmissão ou qualquer uso não autorizado do conteúdo deste site sem a prévia autorização por escrito do titular.\n\nO uso do favicon e da identidade visual está vinculado à marca Mobile Vision.\n\nPara dúvidas ou solicitações, entre em contato: yurisilva@zt1cw.onmicrosoft.com\n\n<Mobile Vision>\n<link rel='icon' type='image/png' href='img/logo.png'>\n\n© 2025 Mobile Vision. Todos os direitos reservados.`);
+            });
+        }
+    </script>
+</body>
+</html>
