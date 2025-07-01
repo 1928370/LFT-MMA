@@ -218,13 +218,21 @@
         input, select, textarea {
             color: #18181b !important;
         }
+        .hero-logo-mobile {
+            margin-top: 2.5rem;
+        }
+        @media (min-width: 640px) {
+            .hero-logo-mobile {
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100">
 
     <!-- Splash Screen -->
-    <div id="splash-screen" style="position:fixed;z-index:9999;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#18181b 0%,#23272f 100%);transition:opacity 0.8s;">
-        <img src="img/logo.png" alt="LFT MMA Logo" style="width:40vw;max-width:340px;min-width:180px;filter:drop-shadow(0 0 40px #e53e3e88);">
+    <div id="splash-screen" style="position:fixed;z-index:9999;inset:0;display:flex;align-items:center;justify-content:center;background:#000;transition:opacity 0.8s;">
+        <img src="img/logo.png" alt="LFT MMA Logo" style="width:40vw;max-width:340px;min-width:180px;filter:drop-shadow(0 0 40px #000);">
     </div>
 
     <!-- Navigation -->
@@ -266,7 +274,7 @@
     <section id="home" class="hero min-h-screen flex items-center justify-center text-white relative overflow-hidden">
         <!-- Marca d'água do local removida, agora é background principal -->
         <div class="container mx-auto px-4 text-center relative z-10">
-            <img src="img/logo.png" alt="LFT MMA Logo" class="mx-auto h-32 mb-8">
+            <img src="img/logo.png" alt="LFT MMA Logo" class="mx-auto h-32 mb-8 hero-logo-mobile">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">LFT MMA</h1>
             <h2 class="text-2xl md:text-3xl font-semibold mb-8">Excelência em Artes Marciais</h2>
             <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10">Transformando vidas através do Muay Thai, Boxe e Jiu-Jitsu. Desenvolva disciplina, condicionamento físico e autodefesa em um ambiente profissional.</p>
@@ -764,7 +772,7 @@
                     splash.style.opacity = '0';
                     setTimeout(() => splash.style.display = 'none', 800);
                 }
-            }, 5000);
+            }, 3000);
         });
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
