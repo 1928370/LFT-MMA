@@ -517,14 +517,23 @@
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">Profissionais qualificados com vasta experiência em competições e ensino.</p>
             </div>
             
-            <div class="grid md:grid-cols-1 gap-8">
+            <div class="grid md:grid-cols-2 gap-8">
                 <!-- Trainer Leandro -->
                 <div class="flex justify-center">
-                    <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center w-full md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center w-full md:w-4/5">
                         <img src="img/leandrin.png" alt="Mestre Leandro - LFT MMA" class="h-56 w-56 object-contain mb-6" style="background: none;">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Leandro</h3>
-                        <p class="text-red-600 font-semibold mb-3">Mestre e Fundador da LFT MMA</p>
+                        <p class="text-red-600 font-semibold mb-3">Dono, Mestre e Instrutor de Todas as Modalidades</p>
                         <p class="text-gray-600 text-center">Especialista em Muay Thai, Boxe e Jiu-Jitsu. Referência em formação de atletas e desenvolvimento pessoal através das artes marciais.</p>
+                    </div>
+                </div>
+                <!-- Trainer Josiel (Ninja) -->
+                <div class="flex justify-center">
+                    <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center w-full md:w-4/5">
+                        <img src="img/josiel.png" alt="Instrutor Josiel Ninja - LFT MMA" class="h-56 w-56 object-contain mb-6" style="background: none;">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Josiel <span class="text-gray-500">(Ninja)</span></h3>
+                        <p class="text-blue-600 font-semibold mb-3">Instrutor de Muay Thai e Boxe</p>
+                        <p class="text-gray-600 text-center">Conhecido como Ninja, Josiel é instrutor dedicado de Muay Thai e Boxe, trazendo experiência prática e motivação para os alunos evoluírem no esporte.</p>
                     </div>
                 </div>
             </div>
@@ -881,7 +890,7 @@
             });
         });
         
-        // Form submission para WhatsApp
+        // Form submission para WhatsApp e Google Sheets
         const form = document.querySelector('form');
         if (form) {
             form.addEventListener('submit', function(e) {
@@ -894,7 +903,11 @@
                 let erro = '';
                 if (!nome) erro += '- Nome completo obrigatório.\n';
                 if (!email) erro += '- E-mail obrigatório.\n';
-                if (!telefone) erro += '- Telefone obrigatório.\n';
+                // Validação de telefone com DDD (mínimo 10 dígitos numéricos)
+                const telefoneNumeros = telefone.replace(/\D/g, '');
+                if (!telefoneNumeros || telefoneNumeros.length < 10) {
+                    erro += '- Telefone deve conter DDD e número (ex: 34999999999).\n';
+                }
                 if (!interesse) erro += '- Selecione uma modalidade de interesse.\n';
                 if (!mensagem) erro += '- Mensagem obrigatória.\n';
                 if (erro) {
@@ -909,6 +922,7 @@
                     case 'all': interesseLabel = 'Todas as modalidades'; break;
                     default: interesseLabel = '';
                 }
+                // Envia para o WhatsApp
                 const texto =
                     `Olá, equipe LFT MMA! Gostaria de agendar uma aula experimental ou obter mais informações.\n` +
                     `\n` +
@@ -921,6 +935,19 @@
                     `\nAguardo retorno. Obrigado!`;
                 const url = `https://api.whatsapp.com/send?phone=5534984206130&text=${encodeURIComponent(texto)}`;
                 window.open(url, '_blank');
+                // Envia para Google Sheets via Apps Script
+                fetch('https://script.google.com/macros/s/AKfycbx8tHD97e02pDtucsG9Kmmz-RLocgttvDapuBvdvEnSX9CovxIqwFDoa1YnvHFG6BqA/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nome,
+                        email,
+                        telefone,
+                        interesse: interesseLabel,
+                        mensagem
+                    })
+                });
             });
         }
         
@@ -929,6 +956,23 @@
         if (termoDireitos) {
             termoDireitos.addEventListener('click', function() {
                 alert(`TERMO DE DIREITOS RESERVADOS\n\nEste site, incluindo todo o seu conteúdo visual, textual e funcional, é propriedade exclusiva de Mobile Vision.\n\nTodos os direitos autorais, marcas, logotipos, imagens, vídeos, textos, códigos e demais elementos presentes neste site estão protegidos pela legislação vigente.\n\nÉ proibida a reprodução, distribuição, modificação, exibição, transmissão ou qualquer uso não autorizado do conteúdo deste site sem a prévia autorização por escrito do titular.\n\nO uso do favicon e da identidade visual está vinculado à marca Mobile Vision.\n\nPara dúvidas ou solicitações, entre em contato: yurisilva@zt1cw.onmicrosoft.com\n\n<Mobile Vision>\n<link rel='icon' type='image/png' href='img/logo.png'>\n\n© 2025 Mobile Vision. Todos os direitos reservados.`);
+            });
+        }
+        // Máscara automática para telefone (formato (99) 99999-9999)
+        const inputTelefone = document.getElementById('phone');
+        if (inputTelefone) {
+            inputTelefone.addEventListener('input', function(e) {
+                let v = e.target.value.replace(/\D/g, '');
+                if (v.length > 11) v = v.slice(0, 11);
+                if (v.length > 6) {
+                    e.target.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+                } else if (v.length > 2) {
+                    e.target.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+                } else if (v.length > 0) {
+                    e.target.value = `(${v}`;
+                } else {
+                    e.target.value = '';
+                }
             });
         }
     </script>
